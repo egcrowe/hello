@@ -1,0 +1,19 @@
+#!/bin/sh
+# Usage: hello.stop
+#
+PIPE_DIR=/tmp/stop/
+ERLANG_LOG_DIR=/tmp/stop
+ROOTDIR=/usr/lib/erlang
+HELLO_NODE=hello@`hostname`
+
+mkdir -p $ERLANG_LOG_DIR
+
+run_cmd="$ROOTDIR/erts-@ERLANG_ERTS_VER@/bin/erl\
+        -boot stop\
+        -sname stop\
+        -setcookie helloworld\
+        -eval 'pong=net_adm:ping(list_to_atom(\"$HELLO_NODE\")).'\
+        -eval 'rpc:call(list_to_atom(\"$HELLO_NODE\"), init, stop, []).'\
+        -s init stop"
+
+run_erl -daemon $PIPE_DIR $ERLANG_LOG_DIR "exec $run_cmd"

@@ -1,0 +1,17 @@
+#!/bin/sh
+# Usage: hello.start [args]
+#
+PIPE_DIR=/tmp/start/
+ERLANG_LOG_DIR=/tmp/start
+ROOTDIR=/usr/lib/erlang
+
+mkdir -p $ERLANG_LOG_DIR
+
+run_cmd="$ROOTDIR/erts-@ERLANG_ERTS_VER@/bin/erl\
+        -boot start\
+        -config /etc/hello.d/hello\
+        -sname hello\
+        -setcookie helloworld\
+        -s hello start $@"
+
+run_erl -daemon $PIPE_DIR $ERLANG_LOG_DIR "exec $run_cmd"

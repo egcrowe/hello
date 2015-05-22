@@ -1,0 +1,7 @@
+{release, {"Hello System", "@HELLO_VSN@"},
+ {erts, "@ERLANG_ERTS_VER@"},
+ [
+  {kernel, "@ERLANG_LIB_VER_kernel@"},
+  {hello, "@HELLO_VSN@"}
+ ]
+}.

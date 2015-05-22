@@ -1,0 +1,9 @@
+{application,mlcc,
+ [{description,"The mlcc application"},
+  {vsn, "&vsn&"},
+  {mod,{hello,[]}},
+  {modules, 'hello'},
+  {registered, []},
+  {applications,[kernel]},
+  {env, []}
+ ]}.
