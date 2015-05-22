@@ -1,6 +1,6 @@
 {application,mlcc,
  [{description,"The mlcc application"},
-  {vsn, "&vsn&"},
+  {vsn, "&VSN&"},
   {mod,{hello,[]}},
   {modules, 'hello'},
   {registered, []},
