@@ -2,16 +2,16 @@
 # Usage: hello.start [args]
 #
 PIPE_DIR=/tmp/start/
-ERLANG_LOG_DIR=/tmp/start
-ROOTDIR=/usr/lib/erlang
+ERLANG_LOGDIR=/tmp/start
+BINDIR=/usr/lib/erlang/erts-@ERLANG_ERTS_VER@/bin
 
-mkdir -p $ERLANG_LOG_DIR
+mkdir -p $ERLANG_LOGDIR
 
-run_cmd="$ROOTDIR/erts-@ERLANG_ERTS_VER@/bin/erl\
-        -boot start\
+run_cmd="$BINDIR/erl\
+        -boot $BINDIR/start\
         -config /etc/hello.d/hello\
         -sname hello\
         -setcookie helloworld\
         -s hello start $@"
 
-run_erl -daemon $PIPE_DIR $ERLANG_LOG_DIR "exec $run_cmd"
+$BINDIR/run_erl -daemon $PIPE_DIR $ERLANG_LOGDIR "exec $run_cmd"
