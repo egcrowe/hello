@@ -3,15 +3,15 @@
 #
 PIPE_DIR=/tmp/start/
 ERLANG_LOGDIR=/tmp/start
-BINDIR=/usr/lib/erlang/erts-@ERLANG_ERTS_VER@/bin
+ROOTDIR=/usr/lib/erlang
+BINDIR=$ROOTDIR/erts-@ERLANG_ERTS_VER@/bin
 
 mkdir -p $ERLANG_LOGDIR
 
 run_cmd="$BINDIR/erl\
-        -boot $BINDIR/start\
+        -boot /etc/hello.d/hello\
         -config /etc/hello.d/hello\
         -sname hello\
-        -setcookie helloworld\
-        -s hello start $@"
+        -setcookie helloworld $@"
 
 $BINDIR/run_erl -daemon $PIPE_DIR $ERLANG_LOGDIR "exec $run_cmd"

@@ -12,6 +12,7 @@ AC_ERLANG_NEED_ERLC
 AC_ERLANG_NEED_ERL
 AC_ERLANG_SUBST_ERTS_VER
 AC_ERLANG_CHECK_LIB([kernel],[],[])
+AC_ERLANG_CHECK_LIB([stdlib],[],[])
 
 # Checks for header files.
 
@@ -30,6 +31,7 @@ AC_SUBST(HELLO_VSN)
 
 AC_CONFIG_FILES([Makefile
                  src/Makefile
+                 sys/Makefile
                  sys/hello.rel
                  sys/hello.start
                  sys/hello.stop])

@@ -14,6 +14,8 @@ am__v_APP_1 =
 headers =
 
 sources = \
+ hello_app.erl \
+ hello_sup.erl \
  hello.erl
 
 beams = $(addsuffix .beam, $(basename $(sources)))
